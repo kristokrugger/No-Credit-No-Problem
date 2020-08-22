@@ -1,0 +1,10 @@
+# api
+flask==1.0.2
+
+# install from gemfury logistic_regression_model package
+--index-url https://pypi.fury.io/kristokrugger/
+--extra-index-url https://pypi.org/simple/
+logistic-regression-model==0.1.0
+
+# deployment
+gunicorn==19.9.0

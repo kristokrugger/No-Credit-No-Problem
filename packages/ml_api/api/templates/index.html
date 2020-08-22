@@ -1,0 +1,160 @@
+<html>  
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/style.css') }}">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  </head>
+
+
+  <body>
+      <div class="applicationSection">
+        <div class="info">
+          <br><br><br><br><br><br>
+          <h1>No Credit? <br> No Problem!</h1>
+          <i class='fas fa-donate' style='font-size:68px;color:rgba(218, 165, 32, 0.7); padding-top:30px: padding-bottom: 30px;'></i>
+          <p>Let Us Help...</p>
+
+          <h3 style="color: yellow;"> {{ prediction_text }} </h3>
+        </div>
+        
+        <form action="{{ url_for('prediction_app.predict') }}" method="POST" class="applicationForm" name="applicationForm">
+          <h2>Loan Application Form</h2>
+          <ul class="noBullet">
+            <li>
+              <label for="name"></label>
+              <input type="text" class="inputFields" id="full_name" name="full_name" placeholder="Full Name" value="" required/>
+
+              <label for="age"></label>
+              <input type="number" class="inputFields" id="age" name="age" min="18" max="99" placeholder="Age" required/>
+            </li>
+
+            <li>
+              <label for="capital_gain"></label>
+              <input type="number" class="inputFields" id="capital_gain" name="capital_gain" min="0" placeholder="Capital Gain" required/>
+      
+              <label for="capital_loss"></label>
+              <input type="number" class="inputFields" id="capital_loss" name="capital_loss" min="0" placeholder="Capital Loss" required/>
+            </li>
+
+
+            <li>
+              <label for="hours_per_week"></label>
+              <input type="number" class="inputFields" id="hours_per_week" name="hours_per_week" min="1" max="99" placeholder="Hours Worked Per Week" required/>
+
+              <input list="workclass" class="inputFields" name="workclass" placeholder="Work Class">
+              <datalist id="workclass">
+                <option value="Private">Private</option>
+                <option value="Local-gov">Local-gov</option>
+                <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                <option value="Federal-gov">Federal-gov</option>
+                <option value="State-gov">State-gov</option>
+                <option value="Self-emp-inc">Self-emp-inc</option>
+                <option value="Without-pay">Without-pay</option>
+                <option value="Never-worked">Never-worked</option>
+                <option value="Other">Other</option>
+                <option value="?">Prefer Not to Say</option>
+              </datalist>
+         
+              <input list="marital_status" class="inputFields" name="marital_status" placeholder="Marital Status" required/>
+              <datalist id="marital_status">
+                <option value="Never-married">Never-married</option>
+                <option value="Married-civ-spouse">Married-civ-spouse</option>
+                <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Separated">Separated</option>
+                <option value="Married-spouse-absent">Married-spouse-absent</option>
+                <option value="Married-AF-spouse">Married-AF-spouse</option>
+                <option value="Other">Other</option>
+              </datalist>
+      
+              <input list="occupation" class="inputFields" name="occupation" placeholder="Occupation">
+              <datalist id="occupation">
+                <option value="Armed-Forces">Armed-Forces</option>
+                <option value="Farming-fishing">Farming/fishing</option>
+                <option value="Protective-serv">Protective-serv</option>
+                <option value="Machine-op-inspct">Machine-op-inspct</option>
+                <option value="Craft-repair">Craft/repair</option>
+                <option value="Sales">Sales</option>
+                <option value="Tech-support">Tech/support</option>
+                <option value="Exec-managerial">Exec/managerial</option>
+                <option value="Transport-moving">Transport/moving</option>
+                <option value="Handlers-cleaners">Handlers/cleaners</option>
+                <option value="Tech-support">Tech/support</option>
+                <option value="Prof-specialty">Prof-specialty</option>
+                <option value="Adm-clerical">Adm-clerical</option>
+                <option value="Priv-house-serv">Priv-house-serv</option>
+                <option value="Other-service">Other</option>
+                <option value="?">Prefer Not to Say</option>
+              </datalist>
+            </li>
+
+            <li>
+              <input list="relationship" class="inputFields" name="relationship" placeholder="Family Relationship" required/>
+              <datalist id="relationship">
+                <option value="Own-child">Own-child</option>
+                <option value="Husband">Husband</option>
+                <option value="Not-in-family">Not-in-family</option>
+                <option value="Unmarried">Unmarried</option>
+                <option value="Wife">Wife</option>
+                <option value="Other-relative">Other</option>
+              </datalist>
+         
+              <input list="race" class="inputFields" name="race" placeholder="Race" required/>
+              <datalist id="race">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Asian-Pac-Islander">Asian/Pacific-Islander</option>
+                <option value="Amer-Indian-Eskimo">Native American</option>
+                <option value="Other">Other</option>
+              </datalist>
+            </li>
+
+             <li>
+              <input type="radio" id="male" name="gender" value="Male" required/>
+              <label for="male">Male</label> &nbsp &nbsp
+              <input type="radio" id="female" name="gender" value="Female">
+              <label for="female">Female</label> &nbsp &nbsp
+              <input type="radio" id="other" name="gender" value="Other">
+              <label for="other">Other</label>
+            </li>
+
+            <li>
+              <input list="native_country" class="inputFields" name="native_country" placeholder="Native Country">
+              <datalist id="native-country">
+                <option value="United-States">United States</option>
+                <option value="Other">Other</option>
+                <option value="?">Prefer Not to Say</option>
+              </datalist>
+          
+              <input list="education" class="inputFields" name="education" placeholder="Highest Education Level" required/>
+              <datalist id="education">
+                <option value="Preschool">Preschool</option>
+                <option value="1st-4th">1st-4th</option>
+                <option value="5th-6th">5th-6th</option>
+                <option value="7th-8th">7th-8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+                <option value="HS-grad">HS-grad</option>
+                <option value="Prof-school">Prof-school</option>
+                <option value="Assoc-acdm">Assoc-acdm</option>
+                <option value="Assoc-voc">Assoc-voc</option>
+                <option value="Some-college">Some-college</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="Masters">Masters</option>
+                <option value="Doctorate">Doctorate</option>
+              </datalist>
+            </li>
+            
+            
+
+            <li id="center-btn">
+              <input type="submit" id="apply-btn" name="apply" alt="Apply" value="Apply">
+            </li>
+          </ul>
+
+        </form>
+      </div>
+  </body>
+</html>
